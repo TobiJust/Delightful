@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/delightful_header_background"
+    android:orientation="vertical"
+    tools:context=".DelightfulActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/login_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:text="@string/app_name_italic"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFF"
+            android:textSize="160sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/login_subheader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/login_subheader"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="#d3d3d3"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/login_username"
+            android:layout_width="@dimen/button_login_width"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/delightful_edittext_oval"
+            android:ems="10"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="@string/login_username"
+            android:textSize="25sp"
+            android:textStyle="italic" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="@dimen/button_login_width"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/delightful_edittext_oval"
+            android:ems="10"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="@string/login_password"
+            android:inputType="textPassword"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/login_submit"
+            android:layout_width="@dimen/button_login_width"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/delightful_login_button_oval"
+            android:onClick="sendMessage"
+            android:text="@string/login_submit"
+            android:textColor="#FFF"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/returnMessageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+</LinearLayout>

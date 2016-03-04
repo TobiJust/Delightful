@@ -1,0 +1,85 @@
+package de.thwildau.delightful;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainMenuActivity extends Activity implements OnClickListener {
+
+	TextView mainMenuHeaderTextView;
+	Button logoutButton;
+	Button serviceButton;
+	Button controlButton;
+	Button heatingButton;
+	Button activitiesButton;
+	Button alarmButton;
+	Button informationButton;
+
+	@Override
+	public void onClick(View v) {
+		Intent intent = null;
+		switch (v.getId()) {
+		case R.id.main_menu_logout_button:
+			// Logout Button
+			break;
+		case R.id.main_menu_button_service:
+			// Service Button
+			break;
+		case R.id.main_menu_button_control:
+			intent = new Intent(this, ControlActivity.class);
+			// Control Button
+			break;
+		case R.id.main_menu_button_heating:
+			intent = new Intent(this, GradientActivity.class);
+			// Heating Button
+			break;
+		case R.id.main_menu_button_activities:
+			// Activities Button
+			break;
+		case R.id.main_menu_button_alarm:
+			// Alarm Button
+			Toast.makeText(this, "Test", Toast.LENGTH_LONG).show();
+			break;
+		case R.id.main_menu_button_information:
+			// Information Button
+			break;
+		}
+		if (intent != null)
+			startActivity(intent);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main_menu_layout);
+
+		mainMenuHeaderTextView = (TextView) findViewById(R.id.main_menu_header);
+
+		Typeface header_typeface = Typeface.createFromAsset(getAssets(),
+				"fonts/ITCEDSCR.TTF");
+		mainMenuHeaderTextView.setTypeface(header_typeface);
+
+		logoutButton = (Button) findViewById(R.id.main_menu_logout_button);
+		serviceButton = (Button) findViewById(R.id.main_menu_button_service);
+		controlButton = (Button) findViewById(R.id.main_menu_button_control);
+		heatingButton = (Button) findViewById(R.id.main_menu_button_heating);
+		activitiesButton = (Button) findViewById(R.id.main_menu_button_activities);
+		alarmButton = (Button) findViewById(R.id.main_menu_button_alarm);
+		informationButton = (Button) findViewById(R.id.main_menu_button_information);
+
+		logoutButton.setOnClickListener(this);
+		serviceButton.setOnClickListener(this);
+		controlButton.setOnClickListener(this);
+		heatingButton.setOnClickListener(this);
+		activitiesButton.setOnClickListener(this);
+		alarmButton.setOnClickListener(this);
+		informationButton.setOnClickListener(this);
+
+	}
+}

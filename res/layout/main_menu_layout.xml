@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:orientation="vertical" 
+    android:background="#d3d3d3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:background="@drawable/delightful_header_background">
+
+        <TextView
+            android:id="@+id/main_menu_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_name_italic"
+            android:textColor="#FFF"
+            android:textSize="100sp" />
+
+        <Button
+            android:id="@+id/main_menu_logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/mensch"
+            android:text="@string/main_menu_logout"
+            android:textColor="#FFF" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="140dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@id/main_menu_logout_button"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
+
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/main_menu_button_service"
+            style="@style/MainMenuButton"
+            android:layout_centerHorizontal="true"
+            android:drawableTop="@drawable/cocktail_small"
+            android:text="@string/main_menu_service" />
+
+        <Button
+            android:id="@+id/main_menu_button_control"
+            style="@style/MainMenuButton"
+            android:layout_toLeftOf="@id/main_menu_button_service"
+            android:drawableTop="@drawable/lampe"
+            android:text="@string/main_menu_control" />
+
+        <Button
+            android:id="@+id/main_menu_button_heating"
+            style="@style/MainMenuButton"
+            android:layout_toRightOf="@id/main_menu_button_service"
+            android:drawableTop="@drawable/sonne"
+            android:text="@string/main_menu_heating" />
+
+        <Button
+            android:id="@+id/main_menu_button_activities"
+            style="@style/MainMenuButton"
+            android:layout_below="@id/main_menu_button_service"
+            android:layout_centerHorizontal="true"
+            android:drawableTop="@drawable/hotel_schild"
+            android:text="@string/main_menu_activities" />
+
+        <Button
+            android:id="@+id/main_menu_button_alarm"
+            style="@style/MainMenuButton"
+            android:layout_below="@id/main_menu_button_control"
+            android:layout_toLeftOf="@id/main_menu_button_activities"
+            android:drawableTop="@drawable/wecker"
+            android:text="@string/main_menu_alarm" />
+
+        <Button
+            android:id="@+id/main_menu_button_information"
+            style="@style/MainMenuButton"
+            android:layout_below="@id/main_menu_button_heating"
+            android:layout_toRightOf="@id/main_menu_button_activities"
+            android:drawableTop="@drawable/info"
+            android:text="@string/main_menu_information" />
+    </RelativeLayout>
+
+</LinearLayout>

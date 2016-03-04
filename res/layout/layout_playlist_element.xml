@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/DelightfulLinearLayoutSeekBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:paddingTop="30dp" 
+    android:layout_marginBottom="30dp">
+
+    <TextView
+        android:id="@+id/numberView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="1"
+        android:textSize="@dimen/text_size_big"
+        android:width="150dp" />
+
+    <Spinner
+        android:id="@+id/newSpinnerView"
+        style="@style/Widget.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="@drawable/delightful_spinner"
+        android:gravity="center" />
+
+</LinearLayout>

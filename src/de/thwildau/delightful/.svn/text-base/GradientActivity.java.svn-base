@@ -1,0 +1,113 @@
+package de.thwildau.delightful;
+
+import java.util.Iterator;
+
+import com.light.controll.LampControll;
+import com.light.lamptyps.SimpleLamp;
+
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class GradientActivity extends Activity {
+	
+	TextView headerTextView;
+	ImageView colorPickerImageView;
+	Button resetButton;
+	DrawingView drawingView;
+	
+	public LampControll LC = LampControll.getInstance();
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.color_gradient_layout);
+		
+		headerTextView = (TextView) findViewById(R.id.gradient_header);
+		colorPickerImageView = (ImageView) findViewById(R.id.gradient_color_view);
+		resetButton = (Button) findViewById(R.id.gradient_button_reset);
+//		drawingView = (DrawingView) findViewById(R.id.gradient_drawing_view);
+		
+		Typeface header_typeface = Typeface.createFromAsset(getAssets(),
+				"fonts/ITCEDSCR.TTF");
+		headerTextView.setTypeface(header_typeface);
+		
+		resetButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+//				drawingView.resetView();
+			}
+		});
+		
+		
+		colorPickerImageView
+				.setOnTouchListener(new ImageView.OnTouchListener() {
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						float x = event.getX();
+						float y = event.getY();
+						if (x < colorPickerImageView.getWidth()
+								&& y < colorPickerImageView
+										.getHeight() && x > 0 && y > 0) {
+							Log.e("gradient_view", "Touch coordinates: "
+									+ String.valueOf(x) + "x"
+									+ String.valueOf(y));
+							Drawable imgDrawable = (colorPickerImageView)
+									.getDrawable();
+							Bitmap bitmap = Bitmap.createBitmap(
+									colorPickerImageView.getWidth(),
+									colorPickerImageView.getHeight(),
+									Bitmap.Config.ARGB_8888);
+
+							Canvas canvas = new Canvas(bitmap);
+							imgDrawable.draw(canvas);
+
+							int pixel = bitmap.getPixel((int) x,
+									(int) y);
+
+							int redValue = Color.red(pixel);
+							int blueValue = Color.blue(pixel);
+							int greenValue = Color.green(pixel);
+							Log.e("gradient_view", "RGB = " + redValue + ":"
+									+ greenValue + ":" + blueValue);
+							sendColors(redValue, greenValue, blueValue);
+						}
+						return true;
+					}
+				});
+	}
+	
+	private void sendColors(int red, int green, int blue) {
+		try {
+			Log.e("sendColors","Trying to send colors " +  red + " " + green + " " + blue);
+			LC.addTubeLamp(0, "192.168.0.10", 1234, 45);// ("localhost", 12345,
+														// 45);
+														// ("localhost", 12345,
+														// 5,
+														// 5);
+
+			com.light.lamptyps.Color c = new com.light.lamptyps.Color(red,
+					green, blue);
+			// get Lamps
+			for (Iterator<SimpleLamp> iter = LC.getLamps(); iter.hasNext();) {
+				SimpleLamp lamp = iter.next();
+				lamp.setColor(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

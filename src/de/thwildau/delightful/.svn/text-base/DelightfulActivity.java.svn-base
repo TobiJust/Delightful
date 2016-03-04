@@ -1,0 +1,123 @@
+package de.thwildau.delightful;
+
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import de.thwildau.network.DelightfulHttpClient;
+
+public class DelightfulActivity extends Activity {
+
+	public final static boolean DEBUG = true;
+
+	TextView loginHeaderTextView;
+	EditText loginUsernameEditText; // username input
+	EditText loginPasswordEditText; // password input
+	Button loginSubmitButton;
+
+	// just for test cases
+	TextView returnMessage;
+
+	final String ipAdress = "http://192.168.0.101/delightful/login.php"; // ip
+																			// adress
+																			// of
+																			// the
+																			// local
+																			// server
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		/**
+		 * Sets the policy for what actions on the current thread should be
+		 * detected, as well as the penalty if such actions occur.
+		 * 
+		 * StrictMode is most commonly used to catch accidental disk or network
+		 * access on the application's main thread
+		 */
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+				.detectDiskReads().detectDiskWrites().detectNetwork()
+				.penaltyLog().build());
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_delightful);
+		loginHeaderTextView = (TextView) findViewById(R.id.login_header);
+		loginUsernameEditText = (EditText) findViewById(R.id.login_username);
+		loginPasswordEditText = (EditText) findViewById(R.id.login_password);
+		loginSubmitButton = (Button) findViewById(R.id.login_submit);
+
+		// just for test cases
+		returnMessage = (TextView) findViewById(R.id.returnMessageView);
+
+		Typeface header_typeface = Typeface.createFromAsset(getAssets(),
+				"fonts/ITCEDSCR.TTF");
+		loginHeaderTextView.setTypeface(header_typeface);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.delightful, menu);
+		return true;
+	}
+
+	public void sendMessage(View view) {
+
+		// JUST FOR DEBUG REASONS SET DEBUG TO FALSE TO GET NORMAL RESULTS !!!
+		if (DEBUG) {
+			Intent intent = new Intent(this, MainMenuActivity.class);
+			startActivity(intent);
+		} else {
+			// declare parameters that are passed to PHP script i.e. the name
+			// "username" and its value submitted by user
+			ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+
+			// define the parameter
+			postParameters.add(new BasicNameValuePair("username",
+					loginUsernameEditText.getText().toString()));
+			postParameters.add(new BasicNameValuePair("password",
+					loginPasswordEditText.getText().toString()));
+			String response = null;
+
+			// call executeHttpPost method passing necessary parameters
+			try {
+				response = DelightfulHttpClient.executeHttpPost(ipAdress, // ip
+																			// of
+																			// the
+																			// local
+																			// server
+						postParameters);
+
+				try {
+					// Intent intent = new Intent(this,
+					// ChangePasswordActivity.class);
+					// intent.putExtra("user", loginUsernameEditText.getText());
+					if (response.equalsIgnoreCase("Success"))
+						returnMessage.setText(response);
+					// startActivity(intent);
+					else
+						returnMessage.setText(response);
+
+				} catch (Exception e) {
+					Log.e("network", "Error in Display! " + e.toString());
+					;
+				}
+			} catch (Exception e) {
+				Log.e("network", "Error in http connection!! " + e.toString());
+			}
+		}
+	}
+
+}

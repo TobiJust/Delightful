@@ -1,0 +1,111 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (javaClasses.cpp:129), pid=7452, tid=6704
+#  fatal error: Invalid layout of preloaded class
+#
+# JRE version: 7.0_10-b18
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (23.6-b04 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000236d000):  JavaThread "Unknown thread" [_thread_in_vm, id=6704, stack(0x0000000002520000,0x0000000002620000)]
+
+Stack: [0x0000000002520000,0x0000000002620000]
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000236d000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=6704, stack(0x0000000002520000,0x0000000002620000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.008 loading class 0x00000000022c0970 done
+Event: 0.008 loading class 0x0000000002282db0 done
+Event: 0.008 loading class 0x0000000002282d80
+Event: 0.008 loading class 0x00000000086ce580
+Event: 0.008 loading class 0x00000000086ce580 done
+Event: 0.008 loading class 0x00000000086ce5c0
+Event: 0.008 loading class 0x00000000086ce5c0 done
+Event: 0.008 loading class 0x00000000086cf150
+Event: 0.008 loading class 0x00000000086cf150 done
+Event: 0.008 loading class 0x0000000002282d80 done
+
+
+Dynamic libraries:
+0x000000013f760000 - 0x000000013f793000 	C:\Program Files\Java\jre7\bin\javaw.exe
+0x0000000076ff0000 - 0x000000007719c000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000076ed0000 - 0x0000000076fef000 	C:\Windows\system32\kernel32.dll
+0x000007fefd1b0000 - 0x000007fefd21c000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefed80000 - 0x000007fefee5b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefecd0000 - 0x000007fefed6f000 	C:\Windows\system32\msvcrt.dll
+0x000007fefd330000 - 0x000007fefd34f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefd8e0000 - 0x000007fefda0e000 	C:\Windows\system32\RPCRT4.dll
+0x0000000076dd0000 - 0x0000000076eca000 	C:\Windows\system32\USER32.dll
+0x000007fefea80000 - 0x000007fefeae7000 	C:\Windows\system32\GDI32.dll
+0x000007fefed70000 - 0x000007fefed7e000 	C:\Windows\system32\LPK.dll
+0x000007fefe930000 - 0x000007fefe9fa000 	C:\Windows\system32\USP10.dll
+0x000007fefb4d0000 - 0x000007fefb6c4000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7600.16661_none_fa62ad231704eab7\COMCTL32.dll
+0x000007fefe880000 - 0x000007fefe8f1000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefe900000 - 0x000007fefe92e000 	C:\Windows\system32\IMM32.DLL
+0x000007fefd780000 - 0x000007fefd889000 	C:\Windows\system32\MSCTF.dll
+0x000007fefcf10000 - 0x000007fefcf50000 	C:\Windows\system32\nvinitx.dll
+0x0000000067040000 - 0x0000000067111000 	C:\Program Files\Java\jre7\bin\msvcr100.dll
+0x0000000066920000 - 0x000000006703f000 	C:\Program Files\Java\jre7\bin\server\jvm.dll
+0x000007fef5c20000 - 0x000007fef5c29000 	C:\Windows\system32\WSOCK32.dll
+0x000007feff210000 - 0x000007feff25d000 	C:\Windows\system32\WS2_32.dll
+0x000007fefd320000 - 0x000007fefd328000 	C:\Windows\system32\NSI.dll
+0x000007fefad90000 - 0x000007fefadcb000 	C:\Windows\system32\WINMM.dll
+0x00000000771c0000 - 0x00000000771c7000 	C:\Windows\system32\PSAPI.DLL
+0x000000006ad30000 - 0x000000006ad3f000 	C:\Program Files\Java\jre7\bin\verify.dll
+0x000000006ac70000 - 0x000000006ac98000 	C:\Program Files\Java\jre7\bin\java.dll
+0x000000006ac50000 - 0x000000006ac65000 	C:\Program Files\Java\jre7\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 -Xbootclasspath:C:\Users\Just\Studium\Bachelor\Semester 6\Gebaeudeautomation\SmartLight\adt-bundle-windows-x86_64-20130219\adt-bundle-windows-x86_64-20130219\sdk\platforms\android-19\android.jar 
+java_command: com.light.controll.LampTest
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Progra~2\Java\jdk1.7.0_07
+CLASSPATH=.;C:\Program Files (x86)\Java\jre7\lib\ext\QTJava.zip;C:\Program Files (x86)\apache-ant-1.9.2
+PATH=C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\EgisTec MyWinLocker\x86;C:\Program Files (x86)\EgisTec MyWinLocker\x64;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\doxygen\bin;C:\Program Files (x86)\Zend\ZendServer\share\ZendFramework\bin;C:\Program Files (x86)\Zend\ZendServer\bin;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Instant Reality\bin\;C:\Program Files (x86)\Autodesk\Backburner\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\nodejs\;C:\Program Files (x86)\Java\jdk1.7.0_07;C:\Program Files (x86)\Java\jre7;C:\Program Files (x86)\apache-ant-1.9.2;C:\Progra~2\Java\jdk1.7.0_07\bin;C:\Program Files (x86)\Java\jre7;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Users\Just\Desktop\xinput32;C:\Users\Just\Desktop\xinput64;C:\Users\Just\AppData\Roaming\npm;C:\Users\Just\Studium\Bachelor\Semester 6\Gebaeudeautomation\SmartLight\adt-bundle-windows-x86_64-20130219\adt-bundle-windows-x86_64-20130219\sdk\platform-tools;C:\Users\Just\Studium\Bachelor\Semester 6\Gebaeudeautomation\SmartLight\adt-bundle-windows-x86_64-20130219\adt-bundle-windows-x86_64-20130219\sdk\tools;C:\Program Files\nodejs;C:\ant\bin
+USERNAME=Just
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 37 Stepping 5, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7600 
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 37 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht, tsc, tscinvbit
+
+Memory: 4k page, physical 3857112k(986864k free), swap 7712324k(2895140k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (23.6-b04) for windows-amd64 JRE (1.7.0_10-b18), built on Nov 28 2012 05:00:40 by "java_re" with unknown MS VC++:1600
+
+time: Tue Jan 07 13:33:59 2014
+elapsed time: 0 seconds
+

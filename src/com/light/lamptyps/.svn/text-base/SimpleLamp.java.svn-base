@@ -1,0 +1,130 @@
+package com.light.lamptyps;
+
+
+
+import com.network.TCPUDP.client.TCPclient;
+import com.network.lampprotocol.LampProtocol;
+
+/**
+ * @author Fabian
+ *
+ */
+public class SimpleLamp {
+
+	private boolean LightStatus = false;
+	protected Color color;
+	protected String IpAddr;
+	protected int Port;
+	protected int id;
+	protected TCPclient TCP;
+	protected LampProtocol LP;
+	
+
+	public SimpleLamp(int id, String ip, int port) {
+		IpAddr = ip;
+		Port = port;
+		this.connectLamp();
+		LP = new LampProtocol();
+	}
+	
+	public void switchOn(){
+		LightStatus = true;
+		setColor(Color.WHITE);
+	}
+	
+	/**
+	 * 
+	 */
+	public void switchOff(){
+		LightStatus = false;
+		setColor(Color.BLACK);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isOn(){
+		return LightStatus;
+	}
+	
+
+	
+	/**
+	 * Sets the color of the lamp.
+	 * @param color the color of the lamp.
+	 */
+	public void setColor(Color RGB){
+		color = RGB;
+		sendMessage();
+	}
+	
+	/**
+	 * Returns the current color of the lamp.
+	 * @return the current color of the lamp. 
+	 */
+	public Color getActualColor(){
+		return color;
+	}
+	
+
+	
+	//*********************************************************************
+	//Connection
+	//*********************************************************************
+	
+	/**
+	 * Method creates a connection to the lamp
+	 * @param InA - IP Address
+	 * @param Pt - Port
+	 */
+	protected void connectLamp(){
+		if(TCP == null){
+			TCP = new TCPclient();
+			TCP.connect(IpAddr, Port);
+			System.out.println("verbunden");
+		}
+	}
+
+	/**
+	 * Method send a Color to the Lamp
+	 * @param c - Color
+	 */
+	protected void sendMessage(){
+		if(TCP.isConnected()){
+			byte [] Message = LP.createMessage(this);
+			TCP.sendData(Message);
+			//System.out.println("send message: " + Message);
+		}
+	}
+	
+	/**
+	 * Method Closes the connection to the lamp
+	 */
+	public void closeLamp(){
+		TCP.disconnect();
+		System.out.println("connection closed");
+	}
+	
+	
+	
+	/**
+	 * 
+	 */
+	public void setIntensity(int i){
+		color = new Color(i, i, i);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getIntensity(){
+		return (color.getRed() + color.getGreen() + color.getBlue())/3;
+	}
+	
+	public int getID(){
+		return id;
+	}
+
+}

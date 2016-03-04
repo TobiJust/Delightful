@@ -1,0 +1,50 @@
+package com.light.lamptyps;
+
+
+
+import com.network.lampprotocol.TubeLampProtocol;
+
+public class TubeLamp extends SimpleLamp{
+
+	//needs an array to controll all LEDs
+	
+	protected int length;
+	
+	protected Color[] colors;
+
+	public TubeLamp(int id, String ip, int port, int length) {
+		super(id, ip, port);
+		this.length = length;
+		LP = new TubeLampProtocol();
+		colors = new Color[length];
+	}
+	
+	
+	public void setColor(Color[] colors){
+		if(colors.length == length)
+			this.colors = colors;
+	}
+	
+	public Color getColor(int i){
+		if(i < 0 || i >= length) return Color.WHITE;
+		return colors[i];
+	}
+	
+	
+	/* (non-Javadoc)
+	 * @see com.light.lamptyps.SimpleLamp#setColor(java.awt.Color)
+	 */
+	@Override
+	public void setColor(Color RGB) {
+		this.color = RGB;
+		for(int i = 0; i < length; i++){
+			colors[i] = RGB;
+		}
+		sendMessage();
+	}
+
+	public int getLength(){
+		return length;
+	}
+	
+}

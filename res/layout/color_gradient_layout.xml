@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d3d3d3"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/delightful_header_background" >
+
+        <TextView
+            android:id="@+id/gradient_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_name_italic"
+            android:textColor="#FFF"
+            android:textSize="100sp" />
+
+        <Button
+            android:id="@+id/gradient_logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/mensch"
+            android:text="@string/main_menu_logout"
+            android:textColor="#FFF" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="140dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@id/gradient_logout_button"
+            android:background="@android:color/transparent" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/control_seekbar_padding_top" >
+
+            <Button
+                android:id="@+id/gradient_button_reset"
+                android:layout_width="@dimen/gradient_button_reset_width"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/delightful_login_button_oval"
+                android:text="@string/gradient_reset"
+                android:textColor="#FFF"
+                android:textSize="20sp" >
+            </Button>
+
+            <Button
+                android:id="@+id/gradient_image_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="@dimen/gradient_button_camera_width"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/gallery_button"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/camera_button"
+                android:background="@drawable/delightful_login_button_oval"
+                android:text="@string/gradient_image"
+                android:textColor="#FFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/camera_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="@dimen/gradient_button_camera_width"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/gallery_button"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/gallery_button"
+                android:background="@drawable/delightful_login_button_oval"
+                android:text="@string/gradient_photo"
+                android:textColor="#FFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gallery_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="@dimen/gradient_button_gallery_width"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/gradient_button_reset"
+                android:background="@drawable/delightful_login_button_oval"
+                android:text="@string/gradient_gallery"
+                android:textColor="#FFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/gradient_image_button"
+                android:layout_alignBottom="@+id/gradient_image_button"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/gradient_header"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/gradient_view_padding_bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/gradient_view_padding_top" >
+
+            <de.thwildau.delightful.DrawingView
+                android:id="@+id/gradient_drawing_view"
+                android:layout_width="wrap_content"
+                android:layout_height="357dp"
+                android:layout_centerInParent="true"
+                android:background="#DBDBDB"
+                android:src="@drawable/verlauf" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                style="@style/DelightfulLinearLayoutSeekBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/layout_background_border" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="30dp"
+                    android:text="DURATION"
+                    android:textSize="@dimen/text_size_big" />
+
+                <SeekBar
+                    android:id="@+id/gradient_seekBar_duration"
+                    style="@style/DelightfulSeekBarStyle"
+                    android:layout_width="480dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:max="100"
+                    android:progressDrawable="@drawable/progress_blue" />
+
+                <TextView
+                    android:id="@+id/duration_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="0 min"
+                    android:textSize="30sp"
+                    android:width="120sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical" >
+
+                <EditText
+                    android:id="@+id/gradient_duration_editText"
+                    android:layout_width="@dimen/button_login_width"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/delightful_edittext_oval"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Name of gradient"
+                    android:singleLine="true"
+                    android:textSize="25sp"
+                    android:textStyle="italic" >
+
+                    <requestFocus />
+                </EditText>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradient_duration_editText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:gravity="center"
+                    android:text="For reuse in light scenarios."
+                    android:textStyle="italic" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/gradient_cancel"
+                    android:layout_width="@dimen/button_gradient_cancel_width"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/delightful_login_button_oval"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:onClick="sendMessage"
+                    android:text="Cancel"
+                    android:textColor="#FFF"
+                    android:textSize="17sp"
+                    android:textStyle="italic" />
+
+                <Button
+                    android:id="@+id/gradient_submit"
+                    android:layout_width="@dimen/button_gradient_ok_width"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/delightful_login_button_oval"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Ok"
+                    android:textColor="#FFF"
+                    android:textSize="17sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

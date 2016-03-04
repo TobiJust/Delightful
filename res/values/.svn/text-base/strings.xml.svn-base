@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Delightful</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_name_italic">Delightful&#160;</string>
+    <string name="login_subheader">- comfortable - efficient - safe -</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_submit">Submit</string>
+    <string name="main_menu_control">Licht steuern</string>
+    <string name="main_menu_service">Service</string>
+    <string name="main_menu_heating">Heizung</string>
+    <string name="main_menu_alarm">Wecker</string>
+    <string name="main_menu_activities">Aktivitäten</string>
+    <string name="main_menu_information">Informationen</string>
+    <string name="main_menu_logout">LOGOUT</string>
+    <string name="control_apartment_header">This is your apartment.</string>
+    <string name="control_apartment_subheader">Select lights to control.</string>
+    <string name="control_unit_header">Control Unit</string>
+    <string name="control_unit_subheader">Move the sliders to control power and color.</string>
+    <string name="control_scenario">Play-back a light scenario:</string>
+    <string name="gradient_header">Build your color gradient by wiping.</string>
+    <string name="gradient_reset">Reset</string>
+    <string name="gradient_name_hint">Name of gradient</string>
+    <string name="gradient_name_subtext">For reuse in light scenarios.</string>
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.thwildau.delightful"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="de.thwildau.delightful.DelightfulActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.MainMenuActivity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.ControlActivity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.GradientActivity"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.OnAlarmActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="de.thwildau.delightful.onalarmactivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.AlarmActivity"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.StartActivity"
+            android:label="@string/app_name_italic"
+            android:screenOrientation="sensorLandscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="de.thwildau.delightful.MyAlarmService" >
+        </service>
+
+        <receiver
+            android:name="de.thwildau.tools.Alarm"
+            android:process=":remote" >
+        </receiver>
+
+        <activity
+            android:name="de.thwildau.delightful.SupplyItemListActivity"
+            android:label="@string/title_supplyitem_list" >
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.SupplyItemDetailActivity"
+            android:label="@string/title_supplyitem_detail"
+            android:parentActivityName=".SupplyItemListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SupplyItemListActivity" />
+        </activity>
+        <activity
+            android:name="de.thwildau.delightful.PlaylistActivity"
+            android:label="@string/title_activity_playlist" >
+        </activity>
+    </application>
+
+</manifest>

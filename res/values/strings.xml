@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Delightful</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_name_italic">Delightful&#160;</string>
+    <string name="login_subheader">- comfortable - efficient - safe -</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_submit">Submit</string>
+    <string name="main_menu_control">Licht steuern</string>
+    <string name="main_menu_service">Service</string>
+    <string name="main_menu_heating">Heizung</string>
+    <string name="main_menu_alarm">Wecker</string>
+    <string name="main_menu_activities">Aktivitäten</string>
+    <string name="main_menu_information">Informationen</string>
+    <string name="main_menu_logout">LOGOUT</string>
+    <string name="control_apartment_header">This is your apartment.</string>
+    <string name="control_apartment_subheader">Select lights to control.</string>
+    <string name="control_unit_header">Control Unit</string>
+    <string name="control_unit_subheader">Move the sliders to control power and color.</string>
+    <string name="playlist_unit_header">Playlist Control</string>
+    <string name="playlist_unit_subheader">Select the scenarios you want to play in a certain order.</string>
+    <string name="alarm_unit_header">Alarm Control</string>
+    <string name="alarm_unit_subheader">Select the time at which you want to be woken up.</string>
+    <string name="control_scenario">Play-back a light scenario:</string>
+    <string name="gradient_header">Build your color gradient by wiping.</string>
+    <string name="gradient_name_hint">Name of gradient</string>
+    <string name="gradient_name_subtext">For reuse in light scenarios.</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="alarm_settings">Settings</string>
+    <string name="alarm_start">Start</string>
+    <string name="control_flow">Flow</string>
+    <string name="control_playlist">Playlist</string>
+    <string name="control_euryth">Eurythmics</string>
+    <string name="gradient_photo">Photo</string>
+    <string name="gradient_image">Gradient</string>
+    <string name="gradient_gallery">Gallery</string>
+    <string name="gradient_reset">Reset</string>
+    <string name="supply_reset">Set Reminder</string>    
+    <string name="supply_theme">Choose your Activity:</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_supplyactivity_list">Items</string>
+    <string name="title_supplyactivity_detail">SupplyActivity2 Detail</string>
+    <string name="title_activity_supply">SupplyActivity</string>
+    <string name="title_activity_supply_item_detail">SupplyItemDetailActivity</string>
+    <string name="title_supplyitem_list">SupplyItemList</string>
+    <string name="title_supplyitem_detail">SupplyItem Detail</string>
+    <string name="title_activity_playlist">PlaylistActivity</string>
+
+</resources>

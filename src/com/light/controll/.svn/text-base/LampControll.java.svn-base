@@ -1,0 +1,55 @@
+package com.light.controll;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.light.lamptyps.Dimension;
+import com.light.lamptyps.MatrixLamp;
+import com.light.lamptyps.SimpleLamp;
+import com.light.lamptyps.TubeLamp;
+
+
+public class LampControll {
+	
+	public static LampControll instance = null;
+	
+	ArrayList<SimpleLamp> lamplist = new ArrayList<SimpleLamp>();
+
+	protected LampControll(){
+		
+	}
+	
+	public static LampControll getInstance(){
+		if(instance == null){
+			instance = new LampControll();
+		}
+		return instance;
+	}
+	
+	public Iterator<SimpleLamp> getLamps(){
+		return lamplist.iterator();
+	}
+	
+	public void addLamp(int id, String IP, int Port) throws UnknownHostException{
+		SimpleLamp SL = new SimpleLamp(id, IP, Port);
+		lamplist.add(SL);
+	}
+	
+	public void addTubeLamp(int id, String IP, int Port, int length) throws UnknownHostException{
+		TubeLamp TL = new TubeLamp(id, IP, Port, length);
+		lamplist.add(TL);
+	}
+	
+	public void addMatrixLamp(int id, String IP, int Port, int xDimension, int yDimension) throws UnknownHostException{
+		MatrixLamp ML = new MatrixLamp(id, IP, Port, new Dimension(xDimension, yDimension));
+		lamplist.add(ML);
+	}
+	
+	public void closeAllLamps(){
+		Iterator<SimpleLamp> iterator = lamplist.iterator();
+		while (iterator.hasNext()) {
+			SimpleLamp SL = iterator.next();
+			SL.closeLamp();
+		}
+	}
+}

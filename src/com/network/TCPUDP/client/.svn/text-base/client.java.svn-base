@@ -1,0 +1,21 @@
+package com.network.TCPUDP.client;
+
+
+/**
+ * Interface for a network client
+ * 
+ * @author Fabian
+ *
+ */
+public interface client {
+
+	void connect(String ServeripAddress, int Port);
+	
+	boolean isConnected();
+	
+	boolean sendData(String sMessage);
+	
+	String receiveMessage();
+	
+	void disconnect();
+}

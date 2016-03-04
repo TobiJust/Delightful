@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="button_login_width">300dp</dimen>
+    <dimen name="button_gradient_cancel_width">130dp</dimen>
+    <dimen name="button_gradient_ok_width">130dp</dimen>
+    <dimen name="control_seekbar_padding_right">200dp</dimen>
+    <dimen name="control_seekbar_padding_top">10dp</dimen>
+    <dimen name="control_seekbar_padding_bottom">20dp</dimen>
+    <dimen name="control_button_flow_width">160dp</dimen>
+    <dimen name="control_button_playlist_width">160dp</dimen>
+    <dimen name="control_button_euryth_width">160dp</dimen>
+    <dimen name="gradient_button_camera_width">100dp</dimen>
+    <dimen name="gradient_button_gallery_width">100dp</dimen>
+    <dimen name="gradient_button_reset_width">100dp</dimen>
+    <dimen name="text_size_big">25sp</dimen>
+    <dimen name="text_size_middle">15sp</dimen>
+    <dimen name="gradient_view_padding_bottom">10dp</dimen>
+    <dimen name="gradient_view_padding_top">20dp</dimen>
+    <dimen name="supply_button_reset_width">500dp</dimen>
+
+</resources>

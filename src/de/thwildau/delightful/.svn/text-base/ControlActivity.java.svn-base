@@ -1,0 +1,251 @@
+package de.thwildau.delightful;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.light.controll.LampControll;
+import com.light.lamptyps.SimpleLamp;
+
+import de.thwildau.tools.ZoomListener;
+
+public class ControlActivity extends Activity implements
+		OnItemSelectedListener, OnSeekBarChangeListener, OnClickListener {
+	TextView mainMenuHeaderTextView;
+
+	Spinner themeSpinner;
+	ImageView layoutImageView;
+	RelativeLayout layoutBackgroundLinearLayout;
+
+	SeekBar masterSeekBar;
+	SeekBar redSeekBar;
+	SeekBar greenSeekBar;
+	SeekBar blueSeekBar;
+
+	ToggleButton toggleButton1;
+	ToggleButton toggleButton2;
+
+	private ArrayList<ToggleButton> allToggleButtons;
+	private ArrayList<ToggleButton> chosenLamps = new ArrayList<ToggleButton>();
+
+	public LampControll LC = LampControll.getInstance();
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.control_layout);
+
+		mainMenuHeaderTextView = (TextView) findViewById(R.id.control_header);
+
+		themeSpinner = (Spinner) findViewById(R.id.control_spinner_theme);
+		layoutImageView = (ImageView) findViewById(R.id.control_room_layout);
+		layoutBackgroundLinearLayout = (RelativeLayout) findViewById(R.id.control_room_layout_background);
+
+		masterSeekBar = (SeekBar) findViewById(R.id.control_seekBar_master);
+		redSeekBar = (SeekBar) findViewById(R.id.control_seekbar_red);
+		greenSeekBar = (SeekBar) findViewById(R.id.control_seekbar_green);
+		blueSeekBar = (SeekBar) findViewById(R.id.control_seekbar_blue);
+		// set heading type face
+		Typeface header_typeface = Typeface.createFromAsset(getAssets(),
+				"fonts/ITCEDSCR.TTF");
+		mainMenuHeaderTextView.setTypeface(header_typeface);
+
+		// set content for drop down list
+
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.themes, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		themeSpinner.setAdapter(adapter);
+		themeSpinner.setOnItemSelectedListener(this);
+
+		// add listener to seek bars
+		masterSeekBar.setOnSeekBarChangeListener(this);
+		redSeekBar.setOnSeekBarChangeListener(this);
+		greenSeekBar.setOnSeekBarChangeListener(this);
+		blueSeekBar.setOnSeekBarChangeListener(this);
+
+		// add listener to image view
+		layoutImageView.setOnTouchListener(new ZoomListener(layoutImageView));
+
+		toggleButton1 = (ToggleButton) findViewById(R.id.lampButton1);
+		toggleButton2 = (ToggleButton) findViewById(R.id.lampButton2);
+
+		allToggleButtons = new ArrayList<ToggleButton>();
+		allToggleButtons.add(toggleButton1);
+		allToggleButtons.add(toggleButton2);
+
+		// add listener to toggle buttons
+		for (ToggleButton button : allToggleButtons) {
+			button.setOnClickListener(this);
+		}
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int pos,
+			long id) {
+		switch (pos) {
+		case 0:
+			// Sonnenaufgang
+			setColor(255, 190, 0);
+			break;
+		case 1:
+			// Abend
+			setColor(220, 70, 160);
+			break;
+		case 2:
+			// Kühl
+			setColor(224, 255, 255);
+			break;
+		case 3:
+			// Warm
+			setColor(255, 100, 100);
+			break;
+
+		default:
+			transformColorAndSetBars(0xFFFFFF);
+			break;
+		}
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProgressChanged(SeekBar seekBar, int progress,
+			boolean fromUser) {
+
+		// int power = masterSeekBar.getProgress();
+		// int red = redSeekBar.getProgress();
+		// int green = greenSeekBar.getProgress();
+		// int blue = blueSeekBar.getProgress();
+		//
+		// setColor(red, green, blue);
+		//
+		// System.out.println("POWER " + power);
+		//
+		// GradientDrawable drawable = new GradientDrawable();
+		// drawable.setShape(GradientDrawable.OVAL);
+		// drawable.setStroke(4, Color.rgb(red, green, blue));
+		// // drawable.setAlpha(power);
+		// drawable.setColor(Color.GREEN);
+		//
+		// for(ToggleButton lamp : chosenLamps){
+		// if(power == 0)
+		// lamp.setChecked(false);
+		// else{
+		// lamp.setChecked(true);
+		// lamp.setBackgroundDrawable(drawable);
+		// }
+		// }
+
+	}
+
+	@Override
+	public void onStartTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onStopTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+		int power = masterSeekBar.getProgress();
+		int red = redSeekBar.getProgress();
+		int green = greenSeekBar.getProgress();
+		int blue = blueSeekBar.getProgress();
+
+		setColor(red, green, blue);
+
+		System.out.println("POWER " + power);
+
+		GradientDrawable drawable = new GradientDrawable();
+		drawable.setShape(GradientDrawable.OVAL);
+		drawable.setStroke(4, Color.rgb(red, green, blue));
+		// drawable.setAlpha(power);
+		drawable.setColor(Color.GREEN);
+
+		for (ToggleButton lamp : chosenLamps) {
+			if (power == 0)
+				lamp.setChecked(false);
+			else {
+				lamp.setChecked(true);
+				lamp.setBackgroundDrawable(drawable);
+			}
+		}
+		
+		sendColors(red, green, blue);
+
+	}
+
+	private void setColor(int red, int green, int blue) {
+		Log.e("color", "R: " + red + " G: " + green + " B: " + blue);
+
+		redSeekBar.setProgress(red);
+		greenSeekBar.setProgress(green);
+		blueSeekBar.setProgress(blue);
+		sendColors(red, green, blue);
+
+		// layoutImageView.setBackgroundColor(Color.rgb(red, green, blue));
+	}
+
+	private void transformColorAndSetBars(int color) {
+		int red = (color >> 16) & 255;
+		int green = (color >> 8) & 255;
+		int blue = color & 255;
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		for (ToggleButton b : allToggleButtons)
+			if (v == b)
+				if (b.isChecked()) {
+					chosenLamps.add(b);
+				} else {
+					chosenLamps.remove(b);
+				}
+	}
+
+	private void sendColors(int red, int green, int blue) {
+		try {
+			LC.addTubeLamp(0, "192.168.0.10", 1234, 45);// ("localhost", 12345,
+														// 45);
+														// ("localhost", 12345,
+														// 5,
+														// 5);
+
+			com.light.lamptyps.Color c = new com.light.lamptyps.Color(red,
+					green, blue);
+			// get Lamps
+			for (Iterator<SimpleLamp> iter = LC.getLamps(); iter.hasNext();) {
+				SimpleLamp lamp = iter.next();
+				lamp.setColor(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

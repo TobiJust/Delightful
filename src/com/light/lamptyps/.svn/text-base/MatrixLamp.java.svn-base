@@ -1,0 +1,46 @@
+package com.light.lamptyps;
+
+
+public class MatrixLamp extends TubeLamp{
+
+	protected Dimension Size;
+
+	public MatrixLamp(int id, String ip, int port, Dimension size) {
+		super(id, ip, port, size.height * size.width);
+		Size = size;
+		//LP = new TubeLampProtocol();
+	}
+	
+	public Dimension getSize(){
+		return Size;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.light.lamptyps.SimpleLamp#setColor(java.awt.Color)
+	 */
+	@Override
+	public void setColor(Color RGB) {
+		this.color = RGB;
+		for(int y = 0; y < Size.height; y++){
+			for(int x = 0; x < Size.width; x++){
+				setColor(x,y, RGB);			
+			}
+		}
+		sendMessage();
+	}
+
+	public void setColor(Color[][] cArray) {
+		if(cArray.length != Size.width || cArray[0].length != Size.height)return;
+		for(int y = 0; y < Size.height; y++){
+			for(int x = 0; x < Size.width; x++){
+				setColor(x,y, cArray[x][y]);			
+			}
+		}
+		sendMessage();
+	}
+	
+	protected void setColor(int x, int y, Color c) {
+		colors[y*Size.width + x*((y+1)%2) + (Size.width- x- 1)*(y%2)] = c;
+	}
+	
+}

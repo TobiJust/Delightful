@@ -1,0 +1,12 @@
+package com.network.TCPUDP.server;
+
+public interface server {
+
+	void startServer(int Port);
+	
+	void stopServer();
+	
+	boolean sendData(String sMessage);
+	
+	String receiveData();
+}
